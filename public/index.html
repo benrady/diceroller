@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class='ui-mobile'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dice Roller!</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <script src="js/diceroller.js"></script>
+  </head>
+  <body>
+    <div data-role="page">
+      <div data-role="header">
+        <h1>Dice Roller!</h1>
+      </div>
+      <div role="main" class="ui-content">
+        <form class='roll-form'>
+          <input type="text" class='expression' value='3*(2d6 + d6 + d6 + 2d6 + 15)'/>
+          <button class='btn roll-btn'>Roll!</button>
+        </form>
+        <table class='ui-table'>
+          <tbody class='roll-results'>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      $(window).ready(diceRollerReady);
+    </script>
+  </body>
+</html>
