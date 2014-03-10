@@ -34,6 +34,7 @@ function formSubmit(e) {
     var expansion = expand(expression);
     addRow(expansion, eval(expansion).toString());
   } catch(e) {
+    console.log(e);
     $('.error').text(e);
   }
 }
@@ -42,7 +43,14 @@ function clearResults() {
   $('.roll-results').empty();
 }
 
+function keyPress() {
+  var current = $('.expression').val();
+  var newVal = current + $(this).text();
+  $('.expression').val(newVal).change();
+}
+
 function diceRollerReady() {
   $('.roll-form').submit(formSubmit);
-  $('.clear-btn').on('click', clearResults);
+  $('.clear-btn').on('tap', clearResults);
+  $('.input-btn').on('tap', keyPress);
 }
