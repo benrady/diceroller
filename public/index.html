@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html class='ui-mobile'>
   <head>
+    <style type='text/css'>
+      .error {
+        color: #A00;
+      }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dice Roller!</title>
@@ -20,10 +25,14 @@
           <input type="text" class='expression' value='3*(2d6 + d6 + d6 + 2d6 + 15)'/>
           <button class='btn roll-btn'>Roll!</button>
         </form>
-        <table class='ui-table'>
+        <div class='error'></div>
+        <table class='ui-table result-table'>
           <tbody class='roll-results'>
           </tbody>
         </table>
+        <div data-role='footer' data-position='fixed'>
+          <button class='btn clear-btn'>Clear Results</button>
+        </div>
       </div>
     </div>
     <script type='text/javascript'>

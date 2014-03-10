@@ -11,8 +11,6 @@ function expand(expression) {
   var expansion = expression;
   var match = regex.exec(expression);
   while (match) {
-    console.log(expansion);
-    console.log(match);
     expansion = expansion.replace(match[0], rollDie(match[2], match[1] || 1));
     var match = regex.exec(expansion);
   }
@@ -30,11 +28,21 @@ function addRow(expansion, value) {
 
 function formSubmit(e) {
   e.preventDefault();
-  var expression = $('.expression').val();
-  var expansion = expand(expression);
-  addRow(expansion, eval(expansion).toString());
+  try {
+    $('.error').empty();
+    var expression = $('.expression').val();
+    var expansion = expand(expression);
+    addRow(expansion, eval(expansion).toString());
+  } catch(e) {
+    $('.error').text(e);
+  }
+}
+
+function clearResults() {
+  $('.roll-results').empty();
 }
 
 function diceRollerReady() {
   $('.roll-form').submit(formSubmit);
+  $('.clear-btn').on('click', clearResults);
 }
